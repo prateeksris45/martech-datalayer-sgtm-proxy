@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MarTech Tracking Sandbox</title>
+</head>
+<body>
+    <h1>MarTech Parameter Tracking Sandbox</h1>
+    <button id="purchaseBtn">Simulate Purchase Event</button>
+
+    <script type="module">
+        import { trackPurchase } from './src/core-datalayer.js';
+
+        document.getElementById('purchaseBtn').addEventListener('click', () => {
+            const sampleItems = [
+                { id: "P123", name: "Premium Subscription", price: 49.99, quantity: 1 }
+            ];
+            trackPurchase("TXN_999", 49.99, 4.00, "USD", sampleItems);
+            console.log("Current window.dataLayer State:", window.dataLayer);
+            alert("Event pushed to dataLayer! Open browser console to inspect variables.");
+        });
+    </script>
+</body>
+</html>
